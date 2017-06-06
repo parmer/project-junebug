@@ -1,0 +1,13 @@
+$color-link: #ffa500;
+
+$color-friend: #5fbe02;
+$color-adversary: #ff3300;
+
+$color-body-bg: #333;
+$color-card-bg: #444;
+
+@mixin card-style() {
+	background-color: $color-card-bg;
+	border: none;
+	box-shadow: 0 2px 4px darken($color-body-bg, 10%);
+}

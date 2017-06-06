@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Add Friends or Adversaries</title>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/popup.css" />
+    <script src="../libs/angular-1.6.4.min.js"></script>
+    <script src="../js/popup.js"></script>
+  </head>
+  <body ng-controller="ProjectJunebugPopupController as junebugPopup">
+    <h1>Project Junebug</h1>
+
+    <!-- Add Friend -->
+    <form class="add-user-form" id="add-friend-form" ng-submit="junebugPopup.addFriend()">
+      <label class="add-user-form__label">
+        <input class="add-user-form__label__input" type="text" required
+               ng-model="junebugPopup.friendInput"/>
+        <div class="add-user-form__label__placeholder">Add Friend</div>
+      </label>
+      <button class="add-user-form__button" type="submit">Add</button>
+    </form>
+
+    <!-- Add Adversary -->
+    <form class="add-user-form" id="add-adversary-form" ng-submit="junebugPopup.addAdversary()">
+      <label class="add-user-form__label">
+        <input class="add-user-form__label__input" type="text" required
+               ng-model="junebugPopup.adversaryInput" />
+        <div class="add-user-form__label__placeholder">Add Adversary</div>
+      </label>
+      <button class="add-user-form__button" type="submit">Add</button>
+    </form>
+
+    <!-- Friends List -->
+    <div class="user-list user-list--friends" ng-show="junebugPopup.friends.length > 0">
+      <div class="user-list__title"><span class="ion-android-happy"></span>&nbsp;Friends</div>
+      <div ng-repeat="user in junebugPopup.friends" class="user-list__user">
+        <span ng-bind="user"></span>
+        <span ng-click="junebugPopup.removeFriend(user)"
+              class="ion-android-cancel"></span>
+      </div>
+    </div>
+
+    <!-- Adversaries List -->
+    <div class="user-list user-list--adversaries" ng-show="junebugPopup.adversaries.length > 0">
+      <div class="user-list__title"><span class="ion-android-sad"></span>&nbsp;Adversaries</div>
+      <div ng-repeat="user in junebugPopup.adversaries" class="user-list__user">
+        <span class="user-list__user__name" ng-bind="user"></span>
+        <span class="user-list__user__remove ion-android-cancel"
+              ng-click="junebugPopup.removeAdversary(user)"></span>
+      </div>
+    </div>
+  </body>
+</html>

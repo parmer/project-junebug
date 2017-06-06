@@ -1,0 +1,118 @@
+@import url("http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+@import "armer-base/armer-base";
+@import "variables";
+
+body {
+  font-family: "Titillium Web", "Helvetica Neue", sans-serif;
+  padding: 1em;
+}
+
+$element-border-color: #ccc;
+
+h1 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 0 0 1em;
+}
+
+.add-user-form {
+  $form-side-padding: 0.6em;
+  $form-vert-padding: 0.4em;
+  $form-label-size: 0.75em;
+  $form-border-radius: 0.25em;
+
+  font-size: 1rem;
+  display: flex;
+  margin-bottom: 1em;
+
+  &:last-of-type {
+    margin-bottom: 1.5em;
+  }
+
+  .add-user-form__label {
+    border-radius: $form-border-radius 0 0 $form-border-radius;
+    background: #FFFFFF;
+    border: 1px solid $element-border-color;
+    border-right: none;
+    position: relative;
+    margin: 0;
+    padding: ($form-vert-padding * 1.5 + $form-label-size) $form-side-padding $form-vert-padding;
+
+    .add-user-form__label__placeholder {
+      position: absolute;
+      left: $form-side-padding;
+      top: calc(50% - 0.5em);
+      line-height: 1;
+      font-size: 1em;
+      opacity: 0.4;
+
+      @include apply-transitions($properties: top font-size opacity, $duration: 0.3s);
+    }
+
+    .add-user-form__label__input {
+      outline: none;
+      border: none;
+      background: transparent;
+
+      &:focus, &:valid {
+        + .add-user-form__label__placeholder {
+          opacity: 1;
+          top: $form-vert-padding;
+          font-size: $form-label-size;
+        }
+      }
+    }
+  }
+
+  .add-user-form__button {
+    padding: $form-vert-padding ($form-side-padding * 2);
+    background: rgba($color-link, 0.75);
+    border-radius: 0 $form-border-radius $form-border-radius 0;
+    outline: none;
+    border: 1px solid $color-link;
+    cursor: pointer;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+    @include apply-transitions($properties: background, $duration: 0.3s);
+
+    &:hover {
+      background: rgba($color-link, 0.9);
+    }
+  }
+}
+
+.user-list {
+  $user-list-padding: 0.5em;
+
+  border-radius: 0.25em;
+  background: #eee;
+  border: 1px solid $element-border-color;
+  margin-bottom: 1em;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .user-list__title {
+    font-weight: 600;
+    padding: $user-list-padding;
+  }
+
+  .user-list__user {
+    border-top: 1px solid $element-border-color;
+    padding: 0.4em $user-list-padding;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+
+    .user-list__user__remove {
+      color: $element-border-color;
+      cursor: pointer;
+      @include apply-transitions($properties: color, $duration: 0.15s);
+
+      &:hover {
+        color: $color-adversary;
+      }
+    }
+  }
+}

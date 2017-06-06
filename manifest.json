@@ -1,0 +1,21 @@
+{
+  "name": "Project Junebug",
+  "description": "Manage your friends and adversaries of Jinteki.net",
+  "version": "0.1.1",
+  "permissions": [
+    "tabs", "storage",
+    "http://*/*", "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://www.jinteki.net/*", "https://www.jinteki.net/*"],
+      "css": ["styles/project-junebug.css"],
+      "js": ["js/project-junebug.js"]
+    }
+  ],
+  "browser_action": {
+      "default_title": "Add friends or adversaries",
+      "default_popup": "html/popup.html"
+  },
+  "manifest_version": 2
+}

@@ -1,0 +1,18 @@
+@import "variables";
+
+body {
+	background-color: $color-body-bg;
+}
+
+.item.active [class$='-bg'] {
+	background-image: none;
+	background-color: $color-body-bg;
+}
+
+nav.topnav {
+	@include card-style();
+}
+
+div.blue-shade {
+	@include card-style();
+}

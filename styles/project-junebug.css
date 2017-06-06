@@ -1,0 +1,38 @@
+@import url("http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+body {
+  background-color: #333; }
+
+.item.active [class$='-bg'] {
+  background-image: none;
+  background-color: #333; }
+
+nav.topnav {
+  background-color: #444;
+  border: none;
+  box-shadow: 0 2px 4px #1a1a1a; }
+
+div.blue-shade {
+  background-color: #444;
+  border: none;
+  box-shadow: 0 2px 4px #1a1a1a; }
+
+.project-junebug-username .project-junebug-username__friend {
+  font-size: 11px;
+  text-transform: uppercase;
+  background: #5fbe02;
+  margin-left: 0.5em;
+  line-height: 1.1;
+  display: inline-block;
+  padding: 0.3em 0.4em;
+  border-radius: 0.2em; }
+.project-junebug-username .project-junebug-username__adversary {
+  font-size: 11px;
+  text-transform: uppercase;
+  background: #ff3300;
+  margin-left: 0.5em;
+  line-height: 1.1;
+  display: inline-block;
+  padding: 0.3em 0.4em;
+  border-radius: 0.2em; }
+
+/*# sourceMappingURL=project-junebug.css.map */
