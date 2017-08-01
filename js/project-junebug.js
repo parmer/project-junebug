@@ -7,7 +7,7 @@ ProjectJunebugPageController.prototype.JUNEBUG_USERNAME_CLASS = "project-junebug
 
 ProjectJunebugPageController.prototype.USERNAME_SELECTORS = [
     ".chat-box .message .username",
-    ".game-list .player",
+    ".game-list .player"
 ];
 
 ProjectJunebugPageController.prototype.FRIEND = "friend";
@@ -15,30 +15,27 @@ ProjectJunebugPageController.prototype.ADVERSARY = "adversary";
 ProjectJunebugPageController.prototype.INFO = "info";
 
 ProjectJunebugPageController.prototype.checkForUsers = function() {
-    for (var i = 0; i < this.USERNAME_SELECTORS.length; i++) {
-        var selector = this.USERNAME_SELECTORS[i];
+    var selector = this.USERNAME_SELECTORS.join(',');
+    var usernameElements = document.querySelectorAll(selector);
 
-        var usernameElements = document.querySelectorAll(selector);
+    for (var i = 0; i < usernameElements.length; i++) {
+        var usernameElement = usernameElements[i];
+        var usernameText = usernameElement.innerText;
 
-        for (var j = 0; j < usernameElements.length; j++) {
-            var usernameElement = usernameElements[j];
-            var usernameText = usernameElement.innerText;
+        var alreadyHasTag = usernameElement.classList.contains(this.JUNEBUG_USERNAME_CLASS);
+        var isFriend = this.friends.indexOf(usernameText) > -1;
+        var isAdversary = this.adversaries.indexOf(usernameText) > -1;
 
-            var isJunebugEnabled = !usernameElement.classList.contains(this.JUNEBUG_USERNAME_CLASS);
-            var isFriend = this.friends.indexOf(usernameText) > -1;
-            var isAdversary = this.adversaries.indexOf(usernameText) > -1;
-
-            if (isJunebugEnabled) {
-                if (isFriend) {
-                    this.enableJunebugUsername(usernameElement, this.FRIEND);
-                }
-                else if (isAdversary) {
-                    this.enableJunebugUsername(usernameElement, this.ADVERSARY);
-                }
-                else {
-                    this.disableJunebugUsername(usernameElement);
-                }
+        if (!alreadyHasTag) {
+            if (isFriend) {
+                this.enableJunebugUsername(usernameElement, this.FRIEND);
             }
+            else if (isAdversary) {
+                this.enableJunebugUsername(usernameElement, this.ADVERSARY);
+            }
+        }
+        else if (!isFriend && !isAdversary) {
+            this.disableJunebugUsername(usernameElement);
         }
     }
 };
@@ -46,7 +43,6 @@ ProjectJunebugPageController.prototype.checkForUsers = function() {
 ProjectJunebugPageController.prototype.createUserTag = function(type) {
     var userTag = document.createElement("span");
     userTag.classList.add(this.JUNEBUG_USERNAME_CLASS + "__" + type);
-    userTag.innerText = type;
 
     return userTag;
 };

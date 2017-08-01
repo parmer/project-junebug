@@ -2,7 +2,7 @@
 @import "variables";
 @import "jintekit-net-overrides";
 
-@mixin project-junebug-username-tag($color) {
+@mixin project-junebug-username-tag($color, $text) {
 	font-size: 11px;
 	text-transform: uppercase;
 	background: $color;
@@ -11,14 +11,18 @@
 	display: inline-block;
 	padding: 0.3em 0.4em;
 	border-radius: 0.2em;
+
+	&:before {
+		content: "#{$text}";
+	}
 }
 
 .project-junebug-username {
 	.project-junebug-username__friend {
-		@include project-junebug-username-tag($color-friend);
+		@include project-junebug-username-tag($color-friend, "FRIEND");
 	}
 
 	.project-junebug-username__adversary {
-		@include project-junebug-username-tag($color-adversary);
+		@include project-junebug-username-tag($color-adversary, "ADVERSARY");
 	}
 }

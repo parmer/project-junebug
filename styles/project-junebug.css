@@ -16,6 +16,11 @@ div.blue-shade {
   border: none;
   box-shadow: 0 2px 4px #1a1a1a; }
 
+.gameboard .stats > div:nth-of-type(2) {
+  font-size: 24px;
+  line-height: 15px;
+  margin: 4px 0; }
+
 .project-junebug-username .project-junebug-username__friend {
   font-size: 11px;
   text-transform: uppercase;
@@ -25,6 +30,8 @@ div.blue-shade {
   display: inline-block;
   padding: 0.3em 0.4em;
   border-radius: 0.2em; }
+  .project-junebug-username .project-junebug-username__friend:before {
+    content: "FRIEND"; }
 .project-junebug-username .project-junebug-username__adversary {
   font-size: 11px;
   text-transform: uppercase;
@@ -34,5 +41,7 @@ div.blue-shade {
   display: inline-block;
   padding: 0.3em 0.4em;
   border-radius: 0.2em; }
+  .project-junebug-username .project-junebug-username__adversary:before {
+    content: "ADVERSARY"; }
 
 /*# sourceMappingURL=project-junebug.css.map */
